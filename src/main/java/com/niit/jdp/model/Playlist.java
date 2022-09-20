@@ -5,6 +5,10 @@
  */
 package com.niit.jdp.model;
 
-public class Playlist {
+import java.util.List;
 
+public class Playlist {
+    private int playlistId;
+    private String playlistName;
+    private List<Song> songList;
 }
