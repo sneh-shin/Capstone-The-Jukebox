@@ -5,5 +5,5 @@
  */
 package com.niit.jdp.service;
 
-public class SongServiceImpl {
+public class SongServiceImpl implements SongService {
 }

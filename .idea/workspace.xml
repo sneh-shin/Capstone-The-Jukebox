@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added private static final fields URL, Username and Password in the DatabaseService.java class">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/model/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/model/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/DatabaseService.java" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="created SongService.java">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/SongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/SongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/SongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/SongServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +16,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -160,7 +159,42 @@
       <option name="project" value="LOCAL" />
       <updated>1663688905071</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added private fields in the Playlist.java">
+      <created>1663695177671</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1663695177671</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added no-args and parameterised constructor in the Playlist.java">
+      <created>1663695230474</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1663695230474</updated>
+    </task>
+    <task id="LOCAL-00018" summary="added getters and setters for private fields">
+      <created>1663695263710</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1663695263710</updated>
+    </task>
+    <task id="LOCAL-00019" summary="added equals(), hashCode() and toString() methods">
+      <created>1663695338149</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1663695338149</updated>
+    </task>
+    <task id="LOCAL-00020" summary="created SongService.java">
+      <created>1663695462343</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1663695462343</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -186,11 +220,14 @@
     <MESSAGE value="created PlaylistRepository.java class" />
     <MESSAGE value="added private fields in the Song.java class" />
     <MESSAGE value="added no-args and parameterised constructor in the Song.java class" />
-    <MESSAGE value="added getters and setters for private fields" />
-    <MESSAGE value="added equals(), hashCode() and toString() methods" />
     <MESSAGE value=" added songs file and database_queries.sql file in the resources" />
     <MESSAGE value="added private static final fields URL, Username and Password in the DatabaseService.java class" />
-    <option name="LAST_COMMIT_MESSAGE" value="added private static final fields URL, Username and Password in the DatabaseService.java class" />
+    <MESSAGE value="added private fields in the Playlist.java" />
+    <MESSAGE value="added no-args and parameterised constructor in the Playlist.java" />
+    <MESSAGE value="added getters and setters for private fields" />
+    <MESSAGE value="added equals(), hashCode() and toString() methods" />
+    <MESSAGE value="created SongService.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="created SongService.java" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
