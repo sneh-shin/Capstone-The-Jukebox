@@ -14,5 +14,15 @@ public class Song {
     private double songDuration;
     private String albumName;
 
+    public Song() {
+    }
 
+    public Song(int songId, String songName, String artistName, String genreName, double songDuration, String albumName) {
+        this.songId = songId;
+        this.songName = songName;
+        this.artistName = artistName;
+        this.genreName = genreName;
+        this.songDuration = songDuration;
+        this.albumName = albumName;
+    }
 }
