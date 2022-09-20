@@ -6,4 +6,13 @@
 package com.niit.jdp.model;
 
 public class Song {
+
+    private int songId;
+    private String songName;
+    private String artistName;
+    private String genreName;
+    private double songDuration;
+    private String albumName;
+
+
 }
