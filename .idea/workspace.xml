@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added junit version 5.9.0 dependency" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added equals(), hashCode() and toString() methods">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/model/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/model/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/model/Song.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -17,7 +29,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2F1yvlyVTW6xyxa4oX5bDgyHm5p" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,7 +83,70 @@
       <option name="project" value="LOCAL" />
       <updated>1663674606983</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="created Song.java">
+      <created>1663674726989</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663674726989</updated>
+    </task>
+    <task id="LOCAL-00006" summary="created Playlist.java">
+      <created>1663674790257</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663674790257</updated>
+    </task>
+    <task id="LOCAL-00007" summary="created DatabaseService.java class">
+      <created>1663674906720</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1663674906720</updated>
+    </task>
+    <task id="LOCAL-00008" summary="created SongRepository.java class">
+      <created>1663674972748</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663674972748</updated>
+    </task>
+    <task id="LOCAL-00009" summary="created PlaylistRepository.java class">
+      <created>1663675015921</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1663675015921</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added private fields in the Song.java class">
+      <created>1663675453854</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1663675453854</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added no-args and parameterised constructor in the Song.java class">
+      <created>1663675579411</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1663675579411</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added getters and setters for private fields">
+      <created>1663675625711</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1663675625711</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added equals(), hashCode() and toString() methods">
+      <created>1663675687824</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1663675687824</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,7 +165,16 @@
     <MESSAGE value="updated the source and control jdk version from 18 to 11" />
     <MESSAGE value="added mysql-connector-java dependency" />
     <MESSAGE value="added junit version 5.9.0 dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="added junit version 5.9.0 dependency" />
+    <MESSAGE value="created Song.java" />
+    <MESSAGE value="created Playlist.java" />
+    <MESSAGE value="created DatabaseService.java class" />
+    <MESSAGE value="created SongRepository.java class" />
+    <MESSAGE value="created PlaylistRepository.java class" />
+    <MESSAGE value="added private fields in the Song.java class" />
+    <MESSAGE value="added no-args and parameterised constructor in the Song.java class" />
+    <MESSAGE value="added getters and setters for private fields" />
+    <MESSAGE value="added equals(), hashCode() and toString() methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="added equals(), hashCode() and toString() methods" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
