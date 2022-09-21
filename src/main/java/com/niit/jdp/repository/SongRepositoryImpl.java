@@ -15,15 +15,7 @@ public class SongRepositoryImpl implements SongRepository<Song> {
 
     @Override
     public boolean add(Connection connection, Song song) throws SQLException {
-        String insertQuery = "INSERT INTO `jukebox`.`song`\n" +
-                "(`song_id`,\n" +
-                "`song_name`,\n" +
-                "`artist_name`,\n" +
-                "`genre_name`,\n" +
-                "`song_duration`,\n" +
-                "`album_name`,\n" +
-                "`file_path`)\n" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String insertQuery = "INSERT INTO `jukebox`.`song`\n" + "(`song_id`,\n" + "`song_name`,\n" + "`artist_name`,\n" + "`genre_name`,\n" + "`song_duration`,\n" + "`album_name`,\n" + "`file_path`)\n" + "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
 
         // 2. create a statement object
