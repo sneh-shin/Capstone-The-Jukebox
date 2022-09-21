@@ -75,7 +75,34 @@ public class SongRepositoryImpl implements SongRepository<Song> {
 
     @Override
     public Song getById(Connection connection, int id) throws SQLException {
-        return null;
+        // 1. write the query for selecting a salesperson object from the `sales_person` table
+        String searchQuery = "SELECT * FROM `jukebox`.`song` WHERE(`song_id` = ?);";
+
+        Song song = new Song();
+
+        // 2. create a statement object
+        try (PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
+
+            // 3. set the values of the query parameters
+            preparedStatement.setInt(1, id);
+
+            // 4. execute the query
+            ResultSet songResultSet = preparedStatement.executeQuery();
+
+            // 5. check if the result set is empty
+            while (songResultSet.next()) {
+                // 6. fetch the values of the current row from the result set
+                int songId = songResultSet.getInt("song_id");
+                String songName = songResultSet.getString("song_name");
+                String artistName = songResultSet.getString("artist_name");
+                String genreName = songResultSet.getString("genre_name");
+                Double songDuration = songResultSet.getDouble("song_duration");
+                String albumName = songResultSet.getString("album_name");
+                String filePath = songResultSet.getString("file_path");
+                song = new Song(songId, songName, artistName, genreName, songDuration, albumName, filePath);
+            }
+        }
+        return song;
     }
 
     @Override
