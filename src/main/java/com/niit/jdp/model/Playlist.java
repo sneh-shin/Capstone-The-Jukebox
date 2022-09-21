@@ -11,14 +11,18 @@ import java.util.Objects;
 public class Playlist {
     private int playlistId;
     private String playlistName;
+
+    private String genreName;
+
     private List<Song> songList;
 
     public Playlist() {
     }
 
-    public Playlist(int playlistId, String playlistName, List<Song> songList) {
+    public Playlist(int playlistId, String playlistName, String genreName, List<Song> songList) {
         this.playlistId = playlistId;
         this.playlistName = playlistName;
+        this.genreName = genreName;
         this.songList = songList;
     }
 
@@ -38,6 +42,14 @@ public class Playlist {
         this.playlistName = playlistName;
     }
 
+    public String getGenreName() {
+        return genreName;
+    }
+
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
+    }
+
     public List<Song> getSongList() {
         return songList;
     }
@@ -51,12 +63,12 @@ public class Playlist {
         if (this == o) return true;
         if (!(o instanceof Playlist)) return false;
         Playlist playlist = (Playlist) o;
-        return getPlaylistId() == playlist.getPlaylistId() && Objects.equals(getPlaylistName(), playlist.getPlaylistName()) && Objects.equals(getSongList(), playlist.getSongList());
+        return getPlaylistId() == playlist.getPlaylistId() && Objects.equals(getPlaylistName(), playlist.getPlaylistName()) && Objects.equals(getGenreName(), playlist.getGenreName()) && Objects.equals(getSongList(), playlist.getSongList());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPlaylistId(), getPlaylistName(), getSongList());
+        return Objects.hash(getPlaylistId(), getPlaylistName(), getGenreName(), getSongList());
     }
 
     @Override
@@ -64,6 +76,7 @@ public class Playlist {
         return "Playlist{" +
                 "playlistId=" + getPlaylistId() +
                 ", playlistName='" + getPlaylistName() + '\'' +
+                ", genreName='" + getGenreName() + '\'' +
                 ", songList=" + getSongList() +
                 '}';
     }
