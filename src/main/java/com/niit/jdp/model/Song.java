@@ -16,16 +16,19 @@ public class Song {
     private double songDuration;
     private String albumName;
 
+    private String filePath;
+
     public Song() {
     }
 
-    public Song(int songId, String songName, String artistName, String genreName, double songDuration, String albumName) {
+    public Song(int songId, String songName, String artistName, String genreName, double songDuration, String albumName, String filePath) {
         this.songId = songId;
         this.songName = songName;
         this.artistName = artistName;
         this.genreName = genreName;
         this.songDuration = songDuration;
         this.albumName = albumName;
+        this.filePath = filePath;
     }
 
     public int getSongId() {
@@ -76,17 +79,25 @@ public class Song {
         this.albumName = albumName;
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Song)) return false;
         Song song = (Song) o;
-        return getSongId() == song.getSongId() && Double.compare(song.getSongDuration(), getSongDuration()) == 0 && Objects.equals(getSongName(), song.getSongName()) && Objects.equals(getArtistName(), song.getArtistName()) && Objects.equals(getGenreName(), song.getGenreName()) && Objects.equals(getAlbumName(), song.getAlbumName());
+        return getSongId() == song.getSongId() && Double.compare(song.getSongDuration(), getSongDuration()) == 0 && Objects.equals(getSongName(), song.getSongName()) && Objects.equals(getArtistName(), song.getArtistName()) && Objects.equals(getGenreName(), song.getGenreName()) && Objects.equals(getAlbumName(), song.getAlbumName()) && Objects.equals(getFilePath(), song.getFilePath());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getSongId(), getSongName(), getArtistName(), getGenreName(), getSongDuration(), getAlbumName());
+        return Objects.hash(getSongId(), getSongName(), getArtistName(), getGenreName(), getSongDuration(), getAlbumName(), getFilePath());
     }
 
     @Override
@@ -98,6 +109,8 @@ public class Song {
                 ", genreName='" + getGenreName() + '\'' +
                 ", songDuration=" + getSongDuration() +
                 ", albumName='" + getAlbumName() + '\'' +
+                ", filePath='" + getFilePath() + '\'' +
                 '}';
     }
 }
+
