@@ -15,7 +15,16 @@ public class PlaylistRepository implements Repository<Playlist> {
 
     @Override
     public boolean add(Connection connection, Playlist playlist) throws SQLException {
-
+        String insertQuery = "INSERT INTO `jukebox`.`playlist`\n" + "(`playlist_id`,\n" + "`playlist_name`,\n" + "`song_list`)\n" + "VALUES (?, ?, ?);";
+        int numberOfRowsAffected;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setInt(1, playlist.getPlaylistId());
+            preparedStatement.setString(2, playlist.getPlaylistName());
+            String songList = playlist.getSongList().toString().trim().replaceAll("\\[\\]", "");
+            preparedStatement.setString(3, songList);
+            numberOfRowsAffected = preparedStatement.executeUpdate();
+        }
+        return numberOfRowsAffected > 0;
     }
 
     @Override
