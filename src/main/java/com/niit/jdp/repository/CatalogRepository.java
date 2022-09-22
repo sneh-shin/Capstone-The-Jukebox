@@ -5,10 +5,13 @@
  */
 package com.niit.jdp.repository;
 
+import com.niit.jdp.model.Song;
 import com.niit.jdp.service.MusicPlayerService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class CatalogRepository {
@@ -29,4 +32,13 @@ public class CatalogRepository {
             System.out.println("5.enter 0 to exit");
             choice = scanner.nextInt();
             if (choice == 1) {
+                List<Song> songList = songRepository.getAll(connection);
+                Collections.sort(songList, (o1, o2) -> o1.getSongName().compareTo(o2.getSongName()));
+                songList.forEach(p -> {
+                    System.out.println(p.getSongName());
+                });
+                choice = scanner.nextInt();
+                String songPath = songList.get(choice - 1).getFilePath();
+                musicPlayerService.play(songPath);
+            }
 

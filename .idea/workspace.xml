@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="implemented add() method in the PlaylistRepository.java">
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added display() method in the CatalogRepository.java">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +268,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663819171530</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="created CatalogRepository.java">
+      <created>1663821092939</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1663821092939</updated>
+    </task>
+    <task id="LOCAL-00028" summary="added display() method in the CatalogRepository.java">
+      <created>1663821490711</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1663821490711</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -306,9 +319,10 @@
     <MESSAGE value="implemented add() method in the SongRepositoryImpl.java" />
     <MESSAGE value="implemented getAll() method in the SongRepositoryImpl.java" />
     <MESSAGE value="implemented getById() method" />
-    <MESSAGE value="created CatalogRepository.java" />
     <MESSAGE value="implemented add() method in the PlaylistRepository.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented add() method in the PlaylistRepository.java" />
+    <MESSAGE value="created CatalogRepository.java" />
+    <MESSAGE value="added display() method in the CatalogRepository.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="added display() method in the CatalogRepository.java" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
