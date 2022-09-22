@@ -40,5 +40,5 @@ public class CatalogRepository {
                 choice = scanner.nextInt();
                 String songPath = songList.get(choice - 1).getFilePath();
                 musicPlayerService.play(songPath);
-            }
+            } else if (choice == 2) {
 
