@@ -5,14 +5,10 @@
  */
 package com.niit.jdp.repository;
 
-import com.niit.jdp.model.Playlist;
-import com.niit.jdp.model.Song;
 import com.niit.jdp.service.MusicPlayerService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 public class CatalogRepository {
@@ -21,7 +17,6 @@ public class CatalogRepository {
     PlaylistRepository playlistRepository = new PlaylistRepository();
     int choice;
     MusicPlayerService musicPlayerService = new MusicPlayerService();
-
     public void displayCatalog(Connection connection) throws SQLException {
         do {
             System.out.println("==================================================================");
@@ -34,59 +29,4 @@ public class CatalogRepository {
             System.out.println("5.enter 0 to exit");
             choice = scanner.nextInt();
             if (choice == 1) {
-                List<Song> songList = songRepository.getAll(connection);
-                Collections.sort(songList, (o1, o2) -> o1.getSongName().compareTo(o2.getSongName()));
-                songList.forEach(p -> {
-                    System.out.println(p.getSongName());
-                });
-                choice = scanner.nextInt();
-                String songPath = songList.get(choice - 1).getFilePath();
-                musicPlayerService.play(songPath);
-            } else if (choice == 2) {
-                List<String> allArtistFromDatabase = songRepository.getAllArtistFromDatabase(connection);
-                Collections.sort(allArtistFromDatabase);
-                System.out.println(allArtistFromDatabase);
-                choice = scanner.nextInt();
-                String artistName = allArtistFromDatabase.get(choice - 1);
-                List<Song> songList = songRepository.getByArtistName(connection, artistName);
-                songList.forEach(song -> {
-                    System.out.println(song.getSongName());
-                });
-                choice = scanner.nextInt();
-                musicPlayerService.play(songList.get(choice - 1).getFilePath());
-            } else if (choice == 3) {
-                List<String> genreFromDatabase = songRepository.getGenreFromDatabase(connection);
-                Collections.sort(genreFromDatabase);
-                for (String genre : genreFromDatabase) {
-                    System.out.println(genre);
-                }
-                choice = scanner.nextInt();
-                String genreName = genreFromDatabase.get(choice - 1);
-                List<Song> songList = songRepository.getByGenreName(connection, genreName);
-                for (Song song : songList) {
-                    System.out.println(song.getSongName());
-                }
-                choice = scanner.nextInt();
-                musicPlayerService.play(songList.get(choice - 1).getFilePath());
-            } else if (choice == 4) {
-                List<Playlist> allPlaylist = playlistRepository.getAll(connection);
-                Collections.sort(allPlaylist, ((o1, o2) -> o1.getPlaylistName().compareTo(o2.getPlaylistName())));
-                for (Playlist playlist : allPlaylist) {
-                    System.out.println(playlist.getPlaylistName());
-                }
-                choice = scanner.nextInt();
-                int playlistId = allPlaylist.get(choice - 1).getPlaylistId();
-                Playlist playlist = playlistRepository.getById(connection, playlistId);
-                for (String songId : playlist.getSongList()) {
-                    Song song = songRepository.getById(connection, Integer.parseInt(songId));
-                    System.out.println(song.getSongName());
-                }
-                choice = scanner.nextInt();
-                int songId = Integer.parseInt(playlist.getSongList().get(choice - 1));
-                Song song = songRepository.getById(connection, songId);
-                musicPlayerService.play(song.getFilePath());
-            }
-            choice = scanner.nextInt();
-        } while (choice != 0);
-    }
-}
+
