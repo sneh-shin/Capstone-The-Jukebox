@@ -14,7 +14,7 @@ import java.util.List;
 public class PlaylistRepository implements Repository<Playlist> {
 
     @Override
-    public boolean add(Connection connection, Playlist playlist) throws SQLException {
+    public List<Playlist> add(Connection connection, Playlist playlist) throws SQLException {
         String insertQuery = "INSERT INTO `jukebox`.`playlist`\n" + "(`playlist_id`,\n" + "`playlist_name`,\n" + "`song_list`)\n" + "VALUES (?, ?, ?);";
         int numberOfRowsAffected;
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -55,7 +55,6 @@ public class PlaylistRepository implements Repository<Playlist> {
             statement.setInt(1, id);
             ResultSet playlistResultSet = statement.executeQuery();
             while (playlistResultSet.next()) {
-                // 5. fetch the values of the current row from the result set
                 int playlistId = playlistResultSet.getInt("playlist_id");
                 String playlistName = playlistResultSet.getString("playlist_name");
                 List<String> songList = List.of(playlistResultSet.getString("song_list").split(","));

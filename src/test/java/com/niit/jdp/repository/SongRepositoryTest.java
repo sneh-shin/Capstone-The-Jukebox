@@ -5,9 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class SongRepositoryTest {
+    SongRepository songRepository;
 
     @BeforeEach
     void setUp() {
+        songRepository = new SongRepository();
     }
 
     @AfterEach
@@ -15,6 +17,12 @@ class SongRepositoryTest {
     }
 
     @Test
-    void getByArtistName() {
+    void getByArtistNameSuccess() {
+        //List<Song> list =
+    }
+
+    @Test
+    void getByArtistNameFailure() {
+
     }
 }

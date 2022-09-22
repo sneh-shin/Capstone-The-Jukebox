@@ -21,6 +21,8 @@ public class CatalogRepository {
     PlaylistRepository playlistRepository = new PlaylistRepository();
     int choice;
     MusicPlayerService musicPlayerService = new MusicPlayerService();
+    private Playlist playlist;
+
     public void displayCatalog(Connection connection) throws SQLException {
         do {
             System.out.println("==================================================================");
@@ -30,7 +32,8 @@ public class CatalogRepository {
             System.out.println("                    2.view songs by artist");
             System.out.println("                    3.view songs by genre");
             System.out.println("                    4.view playlist");
-            System.out.println("                    5.enter 0 to exit");
+            System.out.println("                    5.add playlist");
+            System.out.println("                    6.enter 0 to exit");
             choice = scanner.nextInt();
             if (choice == 1) {
                 List<Song> songList = songRepository.getAll(connection);
@@ -40,7 +43,17 @@ public class CatalogRepository {
                 });
                 choice = scanner.nextInt();
                 String songPath = songList.get(choice - 1).getFilePath();
-                musicPlayerService.play(songPath);
+                musicPlayerService.setSongPath(songPath);
+                musicPlayerService.play();
+                do {
+                    System.out.println("press 0 to stop, 1 to play/pause, 0 to go back to menu");
+                    choice = scanner.nextInt();
+                    if (choice == 0) {
+                        musicPlayerService.stop();
+                    } else if (choice == 1) {
+                        musicPlayerService.pause();
+                    }
+                } while (choice != 0);
             } else if (choice == 2) {
                 List<String> allArtistFromDatabase = songRepository.getAllArtistFromDatabase(connection);
                 Collections.sort(allArtistFromDatabase);
@@ -52,7 +65,9 @@ public class CatalogRepository {
                     System.out.println("                    " + song.getSongName());
                 });
                 choice = scanner.nextInt();
-                musicPlayerService.play(songList.get(choice - 1).getFilePath());
+                musicPlayerService.setSongPath(songList.get(choice - 1).getFilePath());
+                musicPlayerService.play();
+
             } else if (choice == 3) {
                 List<String> genreFromDatabase = songRepository.getGenreFromDatabase(connection);
                 Collections.sort(genreFromDatabase);
@@ -66,7 +81,8 @@ public class CatalogRepository {
                     System.out.println("                    " + song.getSongName());
                 }
                 choice = scanner.nextInt();
-                musicPlayerService.play(songList.get(choice - 1).getFilePath());
+                musicPlayerService.setSongPath(songList.get(choice - 1).getFilePath());
+                musicPlayerService.play();
             } else if (choice == 4) {
                 List<Playlist> allPlaylist = playlistRepository.getAll(connection);
                 Collections.sort(allPlaylist, ((o1, o2) -> o1.getPlaylistName().compareTo(o2.getPlaylistName())));
@@ -83,7 +99,10 @@ public class CatalogRepository {
                 choice = scanner.nextInt();
                 int songId = Integer.parseInt(playlist.getSongList().get(choice - 1));
                 Song song = songRepository.getById(connection, songId);
-                musicPlayerService.play(song.getFilePath());
+                musicPlayerService.setSongPath(song.getFilePath());
+                musicPlayerService.play();
+            } else if (choice == 5) {
+                List<Playlist> newPlaylist = playlistRepository.add(connection, playlist);
             }
             choice = scanner.nextInt();
         } while (choice != 0);
