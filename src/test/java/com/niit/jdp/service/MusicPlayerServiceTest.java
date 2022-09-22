@@ -1,6 +1,7 @@
 package com.niit.jdp.service;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,6 @@ class MusicPlayerServiceTest {
 
     @Test
     void playSuccess() {
-
+        Assertions.assertEquals(, musicPlayerService.play(filePath));
     }
 }

@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="created the object for MusicPlayerService.java class">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/songs/Labrinth – Gangster (Official Audio) _ Euphoria (Original Score from the HBO Series).wav" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added file in the resources folder">
       <change beforePath="$PROJECT_DIR$/src/test/java/com/niit/jdp/service/MusicPlayerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/niit/jdp/service/MusicPlayerServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +44,7 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/Course7_CapstoneProject/capstone-project-jukebox/src/test/resources/songs",
+    "last_opened_file_path": "D:/Course6_RDBMSAndSqlQueries/Sprint3",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -413,7 +412,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663840478993</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="added file in the resources folder">
+      <created>1663840949702</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1663840949702</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,7 +434,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added no-args and parameterised constructor in the Playlist.java" />
     <MESSAGE value="added getters and setters for private fields" />
     <MESSAGE value="added equals(), hashCode() and toString() methods" />
     <MESSAGE value="created SongService.java" />
@@ -453,7 +458,8 @@
     <MESSAGE value="added connectFailure() method" />
     <MESSAGE value="created MusicPlayerServiceTest.java" />
     <MESSAGE value="created the object for MusicPlayerService.java class" />
-    <option name="LAST_COMMIT_MESSAGE" value="created the object for MusicPlayerService.java class" />
+    <MESSAGE value="added file in the resources folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="added file in the resources folder" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
