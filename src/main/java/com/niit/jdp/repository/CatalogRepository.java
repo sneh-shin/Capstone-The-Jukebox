@@ -67,7 +67,27 @@ public class CatalogRepository {
                 choice = scanner.nextInt();
                 musicPlayerService.play(songList.get(choice - 1).getFilePath());
             } else if (choice == 4) {
-
+                List<Playlist> allPlaylist = playlistRepository.getAll(connection);
+                Collections.sort(allPlaylist, ((o1, o2) -> o1.getPlaylistName().compareTo(o2.getPlaylistName())));
+                for (Playlist playlist : allPlaylist) {
+                    System.out.println(playlist.getPlaylistName());
+                }
+                choice = scanner.nextInt();
+                int playlistId = allPlaylist.get(choice - 1).getPlaylistId();
+                Playlist playlist = playlistRepository.getById(connection, playlistId);
+                for (String songId : playlist.getSongList()) {
+                    Song song = songRepository.getById(connection, Integer.parseInt(songId));
+                    System.out.println(song.getSongName());
+                }
+                choice = scanner.nextInt();
+                int songId = Integer.parseInt(playlist.getSongList().get(choice - 1));
+                Song song = songRepository.getById(connection, songId);
+                musicPlayerService.play(song.getFilePath());
             }
+            choice = scanner.nextInt();
+        } while (choice != 0);
+    }
+}
+
 
 
