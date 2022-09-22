@@ -41,4 +41,16 @@ public class CatalogRepository {
                 String songPath = songList.get(choice - 1).getFilePath();
                 musicPlayerService.play(songPath);
             } else if (choice == 2) {
+                List<String> allArtistFromDatabase = songRepository.getAllArtistFromDatabase(connection);
+                Collections.sort(allArtistFromDatabase);
+                System.out.println(allArtistFromDatabase);
+                choice = scanner.nextInt();
+                String artistName = allArtistFromDatabase.get(choice - 1);
+                List<Song> songList = songRepository.getByArtistName(connection, artistName);
+                songList.forEach(song -> {
+                    System.out.println(song.getSongName());
+                });
+                choice = scanner.nextInt();
+                musicPlayerService.play(songList.get(choice - 1).getFilePath());
+
 
