@@ -29,6 +29,17 @@ public class PlaylistRepository implements Repository<Playlist> {
 
     @Override
     public List<Playlist> getAll(Connection connection) throws SQLException {
+        String readQuery = "SELECT * FROM `jukebox`.`playlist`;";
+
+        List<Playlist> playLists = new ArrayList<>();
+        try (Statement statement = connection.createStatement()) {
+            ResultSet playlistResultSet = statement.executeQuery(readQuery);
+            while (playlistResultSet.next()) {
+                int playlistId = playlistResultSet.getInt("playlist_id");
+                String playlistName = playlistResultSet.getString("playlist_name");
+                List<String> songList = List.of(playlistResultSet.getString("song_list").split(","));
+                Playlist playlist = new Playlist(playlistId, playlistName, songList);
+                playLists.add(playlist);
 
             }
         }
