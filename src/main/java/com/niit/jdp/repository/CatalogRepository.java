@@ -66,6 +66,8 @@ public class CatalogRepository {
                 }
                 choice = scanner.nextInt();
                 musicPlayerService.play(songList.get(choice - 1).getFilePath());
+            } else if (choice == 4) {
+
             }
 
 
