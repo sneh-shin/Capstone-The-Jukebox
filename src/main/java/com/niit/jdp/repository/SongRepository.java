@@ -138,23 +138,12 @@ public class SongRepository implements Repository<Song> {
     }
 
     public List<Song> getByArtistName(Connection connection, String artistName) throws SQLException {
-        // 1. write the query for selecting a salesperson object from the `sales_person` table
         String searchQuery = "SELECT * FROM `jukebox`.`song` WHERE(`artist_name` = ?);";
-
         List<Song> songsList = new ArrayList<>();
-
-        // 2. create a statement object
         try (PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
-
-            // 3. set the values of the query parameters
             preparedStatement.setString(1, artistName);
-
-            // 4. execute the query
             ResultSet songResultSet = preparedStatement.executeQuery();
-
-            // 5. check if the result set is empty
             while (songResultSet.next()) {
-                // 6. fetch the values of the current row from the result set
                 int songId = songResultSet.getInt("song_id");
                 String songName = songResultSet.getString("song_name");
                 artistName = songResultSet.getString("artist_name");

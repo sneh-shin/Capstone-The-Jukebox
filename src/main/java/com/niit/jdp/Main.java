@@ -10,17 +10,14 @@ public class Main {
     public static void main(String[] args) {
 
         DatabaseService databaseService = new DatabaseService();
-        try {
-            databaseService.connect();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        Connection connection = databaseService.getConnection();
         CatalogRepository catalogRepository = new CatalogRepository();
         try {
+            databaseService.connect();
+            Connection connection = databaseService.getConnection();
             catalogRepository.displayCatalog(connection);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException | ClassNotFoundException exception) {
+            System.err.println("Could not connect to the database!");
+            exception.printStackTrace();
         }
     }
 }

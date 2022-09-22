@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="implemented the getAll() method in the PlaylistRepository.java">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/PlaylistRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/PlaylistRepository.java" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="called getAll()  and getById() method in the CatalogRepository.java">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/BLACKPINK - ‘Shut Down’ M_V.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Bishop Briggs - River.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Dongurizu - No Way (Lyrics).wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Giveon-Heartbreak-Anniversary-_Audio_.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Labrinth - Mount Everest (Official Audio).wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Offset-_-Metro-Boomin-_Ric-Flair-Drip_-_Official-Audio_.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Schedule.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/niit/jdp/service/DatabaseServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/SongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/SongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/DatabaseService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +30,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -41,6 +55,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "D:/Course7_CapstoneProject/capstone-project-jukebox/src/main/resources/songs",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
@@ -54,6 +70,12 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Course7_CapstoneProject\capstone-project-jukebox\src\main\resources\songs" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.niit.jdp.service" />
     </key>
   </component>
   <component name="RunManager">
@@ -330,7 +352,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663823224908</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="implemented the getById() method in the PlaylistRepository.java">
+      <created>1663823341618</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1663823341618</updated>
+    </task>
+    <task id="LOCAL-00037" summary="called getAll()  and getById() method in the CatalogRepository.java">
+      <created>1663823469974</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1663823469974</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,8 +381,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created DatabaseService.java class" />
-    <MESSAGE value="created SongRepository.java class" />
     <MESSAGE value="created PlaylistRepository.java class" />
     <MESSAGE value="added private fields in the Song.java class" />
     <MESSAGE value="added no-args and parameterised constructor in the Song.java class" />
@@ -370,7 +404,9 @@
     <MESSAGE value="overridden the methods of Repository.java" />
     <MESSAGE value="implemented add() method in the PlaylistRepository.java" />
     <MESSAGE value="implemented the getAll() method in the PlaylistRepository.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented the getAll() method in the PlaylistRepository.java" />
+    <MESSAGE value="implemented the getById() method in the PlaylistRepository.java" />
+    <MESSAGE value="called getAll()  and getById() method in the CatalogRepository.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="called getAll()  and getById() method in the CatalogRepository.java" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

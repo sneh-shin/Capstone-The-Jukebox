@@ -24,7 +24,7 @@ public class DatabaseService {
         return connection;
     }
 
-    public boolean connect() throws SQLException {
+    public boolean connect() throws SQLException, ClassNotFoundException {
         connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         return connection != null;
     }
