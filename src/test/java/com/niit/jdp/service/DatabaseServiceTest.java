@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
 
 class DatabaseServiceTest {
-    DatabaseService databaseService;
     private static final String URL = "jdbc:mysql://localhost:3306/jukebox";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
+    DatabaseService databaseService;
 
     @BeforeEach
     void setUp() {
@@ -26,7 +26,7 @@ class DatabaseServiceTest {
     void connectSuccess() throws SQLException, ClassNotFoundException {
         boolean expected = true;
         boolean actual = databaseService.connect();
-        Assertions.assertEquals(true, actual);
+        Assertions.assertTrue(actual);
     }
 
     @Test
