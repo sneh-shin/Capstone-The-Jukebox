@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="called getAll()  and getById() method in the CatalogRepository.java">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/BLACKPINK - ‘Shut Down’ M_V.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Bishop Briggs - River.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Dongurizu - No Way (Lyrics).wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Giveon-Heartbreak-Anniversary-_Audio_.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Labrinth - Mount Everest (Official Audio).wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Offset-_-Metro-Boomin-_Ric-Flair-Drip_-_Official-Audio_.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/songs/Schedule.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/niit/jdp/service/DatabaseServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/SongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/SongRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/service/DatabaseService.java" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="created object of the DatabaseService.java class">
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/niit/jdp/service/DatabaseServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/niit/jdp/service/DatabaseServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +65,7 @@
       <recent name="com.niit.jdp.service" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DatabaseServiceTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.niit.jdp.Main" />
       <module name="capstone-project-jukebox" />
@@ -92,8 +79,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DatabaseServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="capstone-project-jukebox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.niit.jdp.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.niit.jdp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.niit.jdp.service.DatabaseServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DatabaseServiceTest" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -366,7 +369,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663823469974</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="created DatabaseServiceTest.java">
+      <created>1663839335861</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1663839335861</updated>
+    </task>
+    <task id="LOCAL-00039" summary="created object of the DatabaseService.java class">
+      <created>1663839389514</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1663839389514</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,8 +398,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created PlaylistRepository.java class" />
-    <MESSAGE value="added private fields in the Song.java class" />
     <MESSAGE value="added no-args and parameterised constructor in the Song.java class" />
     <MESSAGE value=" added songs file and database_queries.sql file in the resources" />
     <MESSAGE value="added private static final fields URL, Username and Password in the DatabaseService.java class" />
@@ -406,7 +421,9 @@
     <MESSAGE value="implemented the getAll() method in the PlaylistRepository.java" />
     <MESSAGE value="implemented the getById() method in the PlaylistRepository.java" />
     <MESSAGE value="called getAll()  and getById() method in the CatalogRepository.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="called getAll()  and getById() method in the CatalogRepository.java" />
+    <MESSAGE value="created DatabaseServiceTest.java" />
+    <MESSAGE value="created object of the DatabaseService.java class" />
+    <option name="LAST_COMMIT_MESSAGE" value="created object of the DatabaseService.java class" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
