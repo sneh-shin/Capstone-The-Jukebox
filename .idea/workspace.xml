@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added display() method in the CatalogRepository.java">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="called getAllArtist() and getByArtistName() in the CatalogRepository.java">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +281,28 @@
       <option name="project" value="LOCAL" />
       <updated>1663821490711</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="called getAll() method">
+      <created>1663821794585</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1663821794586</updated>
+    </task>
+    <task id="LOCAL-00030" summary="created reference object for SongRepository.java">
+      <created>1663821909670</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1663821909670</updated>
+    </task>
+    <task id="LOCAL-00031" summary="called getAllArtist() and getByArtistName() in the CatalogRepository.java">
+      <created>1663822038868</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1663822038868</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -297,9 +317,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="initial commit" />
-    <MESSAGE value="updated the source and control jdk version from 18 to 11" />
-    <MESSAGE value="added mysql-connector-java dependency" />
     <MESSAGE value="added junit version 5.9.0 dependency" />
     <MESSAGE value="created Song.java" />
     <MESSAGE value="created Playlist.java" />
@@ -322,7 +339,10 @@
     <MESSAGE value="implemented add() method in the PlaylistRepository.java" />
     <MESSAGE value="created CatalogRepository.java" />
     <MESSAGE value="added display() method in the CatalogRepository.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="added display() method in the CatalogRepository.java" />
+    <MESSAGE value="called getAll() method" />
+    <MESSAGE value="created reference object for SongRepository.java" />
+    <MESSAGE value="called getAllArtist() and getByArtistName() in the CatalogRepository.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="called getAllArtist() and getByArtistName() in the CatalogRepository.java" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

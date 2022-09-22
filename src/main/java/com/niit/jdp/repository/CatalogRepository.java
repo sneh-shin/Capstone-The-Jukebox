@@ -52,5 +52,20 @@ public class CatalogRepository {
                 });
                 choice = scanner.nextInt();
                 musicPlayerService.play(songList.get(choice - 1).getFilePath());
+            } else if (choice == 3) {
+                List<String> genreFromDatabase = songRepository.getGenreFromDatabase(connection);
+                Collections.sort(genreFromDatabase);
+                for (String genre : genreFromDatabase) {
+                    System.out.println(genre);
+                }
+                choice = scanner.nextInt();
+                String genreName = genreFromDatabase.get(choice - 1);
+                List<Song> songList = songRepository.getByGenreName(connection, genreName);
+                for (Song song : songList) {
+                    System.out.println(song.getSongName());
+                }
+                choice = scanner.nextInt();
+                musicPlayerService.play(songList.get(choice - 1).getFilePath());
+            }
 
 
