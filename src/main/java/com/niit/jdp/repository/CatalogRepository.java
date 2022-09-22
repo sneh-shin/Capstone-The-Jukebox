@@ -23,6 +23,14 @@ public class CatalogRepository {
     MusicPlayerService musicPlayerService = new MusicPlayerService();
     private Playlist playlist;
 
+    public Playlist getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(Playlist playlist) {
+        this.playlist = playlist;
+    }
+
     public void displayCatalog(Connection connection) throws SQLException {
         do {
             System.out.println("==================================================================");
@@ -103,6 +111,7 @@ public class CatalogRepository {
                 musicPlayerService.play();
             } else if (choice == 5) {
                 List<Playlist> newPlaylist = playlistRepository.add(connection, playlist);
+
             }
             choice = scanner.nextInt();
         } while (choice != 0);
