@@ -6,22 +6,36 @@
 package com.niit.jdp.repository;
 
 import com.niit.jdp.model.Playlist;
+import com.niit.jdp.model.Song;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlaylistRepository implements Repository<Playlist> {
+    SongRepository songRepository;
+    Playlist playlist;
+
+    List<Playlist> playlistList;
+
+
+    public PlaylistRepository() {
+        songRepository = new SongRepository();
+        playlistList = new ArrayList<>();
+    }
 
     @Override
-    public List<Playlist> add(Connection connection, Playlist playlist) throws SQLException {
-        String insertQuery = "INSERT INTO `jukebox`.`playlist`\n" + "(`playlist_id`,\n" + "`playlist_name`,\n" + "`song_list`)\n" + "VALUES (?, ?, ?);";
+    public boolean add(Connection connection, Playlist playlist) throws SQLException {
+        String insertQuery = "INSERT INTO `jukebox`.`playlist` (`playlist_name`, `song_list`) VALUES (?, ?);";
         int numberOfRowsAffected;
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            preparedStatement.setInt(1, playlist.getPlaylistId());
-            preparedStatement.setString(2, playlist.getPlaylistName());
+            // preparedStatement.setInt(1, playlist.getPlaylistId());
+            preparedStatement.setString(1, playlist.getPlaylistName());
             String songList = playlist.getSongList().toString().trim().replaceAll("\\[\\]", "");
-            preparedStatement.setString(3, songList);
+            preparedStatement.setString(2, songList);
             numberOfRowsAffected = preparedStatement.executeUpdate();
         }
         return numberOfRowsAffected > 0;
@@ -30,21 +44,19 @@ public class PlaylistRepository implements Repository<Playlist> {
     @Override
     public List<Playlist> getAll(Connection connection) throws SQLException {
         String readQuery = "SELECT * FROM `jukebox`.`playlist`;";
-
-        List<Playlist> playLists = new ArrayList<>();
-        try (Statement statement = connection.createStatement()) {
-            ResultSet playlistResultSet = statement.executeQuery(readQuery);
-            while (playlistResultSet.next()) {
-                int playlistId = playlistResultSet.getInt("playlist_id");
-                String playlistName = playlistResultSet.getString("playlist_name");
-                List<String> songList = List.of(playlistResultSet.getString("song_list").split(","));
-                Playlist playlist = new Playlist(playlistId, playlistName, songList);
-                playLists.add(playlist);
-
-            }
+        //List<String> listSong = new ArrayList<>();
+        PreparedStatement preparedStatement = connection.prepareStatement(readQuery);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<Song> list = songRepository.getAll(connection);
+        while (resultSet.next()) {
+            playlist = new Playlist();
+            playlist.setPlaylistId(resultSet.getInt("playlist_id"));
+            playlist.setPlaylistName(resultSet.getString("playlist_name"));
+            List<String> songList = List.of(resultSet.getString("song_list").split(","));
+            playlist.setSongList(songList);
+            playlistList.add(playlist);
         }
-
-        return playLists;
+        return playlistList;
     }
 
     @Override

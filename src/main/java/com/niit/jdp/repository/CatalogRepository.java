@@ -11,6 +11,7 @@ import com.niit.jdp.service.MusicPlayerService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -23,12 +24,32 @@ public class CatalogRepository {
     MusicPlayerService musicPlayerService = new MusicPlayerService();
     private Playlist playlist;
 
+    private String name;
+
+    private List<Song> songList;
+
     public Playlist getPlaylist() {
         return playlist;
     }
 
     public void setPlaylist(Playlist playlist) {
         this.playlist = playlist;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Song> getSongList() {
+        return songList;
+    }
+
+    public void setSongList(List<Song> songList) {
+        this.songList = songList;
     }
 
     public void displayCatalog(Connection connection) throws SQLException {
@@ -54,14 +75,14 @@ public class CatalogRepository {
                 musicPlayerService.setSongPath(songPath);
                 musicPlayerService.play();
                 do {
-                    System.out.println("press 0 to stop, 1 to play/pause, 0 to go back to menu");
+                    System.out.println("press 0 to stop, 1 to play/pause, 2 to go back to menu");
                     choice = scanner.nextInt();
                     if (choice == 0) {
                         musicPlayerService.stop();
                     } else if (choice == 1) {
                         musicPlayerService.pause();
                     }
-                } while (choice != 0);
+                } while (choice != 2);
             } else if (choice == 2) {
                 List<String> allArtistFromDatabase = songRepository.getAllArtistFromDatabase(connection);
                 Collections.sort(allArtistFromDatabase);
@@ -101,20 +122,33 @@ public class CatalogRepository {
                 int playlistId = allPlaylist.get(choice - 1).getPlaylistId();
                 Playlist playlist = playlistRepository.getById(connection, playlistId);
                 for (String songId : playlist.getSongList()) {
-                    Song song = songRepository.getById(connection, Integer.parseInt(songId));
+                    Song song = songRepository.getById(connection, Integer.parseInt((songId)));
                     System.out.println("                    " + song.getSongName());
                 }
                 choice = scanner.nextInt();
-                int songId = Integer.parseInt(playlist.getSongList().get(choice - 1));
-                Song song = songRepository.getById(connection, songId);
+                String songId = (playlist.getSongList().get(choice - 1));
+                Song song = songRepository.getById(connection, Integer.parseInt(songId));
                 musicPlayerService.setSongPath(song.getFilePath());
                 musicPlayerService.play();
             } else if (choice == 5) {
-                List<Playlist> newPlaylist = playlistRepository.add(connection, playlist);
-
+                List<String> songs = new ArrayList<>();
+                Playlist playlist1 = new Playlist();
+                System.out.println("Enter name of Playlist");
+                playlist1.setPlaylistName(scanner.next());
+                songList = songRepository.getAll(connection);
+                do {
+                    System.out.println("Enter the song id's you want to add in the playlist or enter 0 to go back");
+                    choice = scanner.nextInt();
+                    songs.add(String.valueOf(choice));
+                } while (choice != 0);
+                playlist1.setSongList(songs);
+                playlistRepository.add(connection, playlist1);
+                System.out.println("playlist has been added successfully!");
             }
             choice = scanner.nextInt();
         } while (choice != 0);
+        //  playlist.setSongList(songList);
+        // playlistRepository.add(connection,playlist);
     }
 }
 

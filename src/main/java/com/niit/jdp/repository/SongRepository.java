@@ -5,7 +5,6 @@
  */
 package com.niit.jdp.repository;
 
-import com.niit.jdp.model.Playlist;
 import com.niit.jdp.model.Song;
 
 import java.sql.*;
@@ -15,7 +14,7 @@ import java.util.List;
 public class SongRepository implements Repository<Song> {
 
     @Override
-    public List<Playlist> add(Connection connection, Song song) throws SQLException {
+    public boolean add(Connection connection, Song song) throws SQLException {
         String insertQuery = "INSERT INTO `jukebox`.`song`\n" + "(`song_id`,\n" + "`song_name`,\n" + "`artist_name`,\n" + "`genre_name`,\n" + "`song_duration`,\n" + "`album_name`,\n" + "`file_path`)\n" + "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
 
