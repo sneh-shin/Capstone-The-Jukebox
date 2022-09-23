@@ -96,6 +96,15 @@ public class CatalogRepository {
                 choice = scanner.nextInt();
                 musicPlayerService.setSongPath(songList.get(choice - 1).getFilePath());
                 musicPlayerService.play();
+                do {
+                    System.out.println("press 0 to stop, 1 to play/pause, 2 to go back to menu");
+                    choice = scanner.nextInt();
+                    if (choice == 0) {
+                        musicPlayerService.stop();
+                    } else if (choice == 1) {
+                        musicPlayerService.pause();
+                    }
+                } while (choice != 2);
 
             } else if (choice == 3) {
                 List<String> genreFromDatabase = songRepository.getGenreFromDatabase(connection);
@@ -112,6 +121,15 @@ public class CatalogRepository {
                 choice = scanner.nextInt();
                 musicPlayerService.setSongPath(songList.get(choice - 1).getFilePath());
                 musicPlayerService.play();
+                do {
+                    System.out.println("press 0 to stop, 1 to play/pause, 2 to go back to menu");
+                    choice = scanner.nextInt();
+                    if (choice == 0) {
+                        musicPlayerService.stop();
+                    } else if (choice == 1) {
+                        musicPlayerService.pause();
+                    }
+                } while (choice != 2);
             } else if (choice == 4) {
                 List<Playlist> allPlaylist = playlistRepository.getAll(connection);
                 Collections.sort(allPlaylist, ((o1, o2) -> o1.getPlaylistName().compareTo(o2.getPlaylistName())));
@@ -130,6 +148,15 @@ public class CatalogRepository {
                 Song song = songRepository.getById(connection, Integer.parseInt(songId));
                 musicPlayerService.setSongPath(song.getFilePath());
                 musicPlayerService.play();
+                do {
+                    System.out.println("press 0 to stop, 1 to play/pause, 2 to go back to menu");
+                    choice = scanner.nextInt();
+                    if (choice == 0) {
+                        musicPlayerService.stop();
+                    } else if (choice == 1) {
+                        musicPlayerService.pause();
+                    }
+                } while (choice != 2);
             } else if (choice == 5) {
                 List<String> songs = new ArrayList<>();
                 Playlist playlist1 = new Playlist();
@@ -147,8 +174,6 @@ public class CatalogRepository {
             }
             choice = scanner.nextInt();
         } while (choice != 0);
-        //  playlist.setSongList(songList);
-        // playlistRepository.add(connection,playlist);
     }
 }
 

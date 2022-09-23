@@ -16,8 +16,8 @@ public class DatabaseService {
 
     private Connection connection;
 
+
     public DatabaseService() {
-        this.connection = null;
     }
 
     public Connection getConnection() {
