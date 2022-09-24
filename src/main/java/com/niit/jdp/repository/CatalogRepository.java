@@ -64,28 +64,35 @@ public class CatalogRepository {
             choice = scanner.nextInt();
             switch (choice) {
                 case 1: {
+                    System.out.println("==================================================================");
+                    System.out.println("                       Songs Library                    ");
+                    System.out.println("==================================================================");
                     List<Song> songList = songRepository.getAll(connection);
                     Collections.sort(songList, Comparator.comparing(Song::getSongId));
                     songList.forEach(song -> {
                         System.out.println("                    " + song.getSongId() + ". " +
                                 "" + song.getSongName());
                     });
-                    choice = scanner.nextInt();
                     System.out.println("Choose the song you wish to play : ");
-                    String songPath = songList.get(choice - 1).getFilePath();
-                    musicPlayerService.setSongPath(songPath);
-                    musicPlayerService.play();
-                    int songChoice;
-                    do {
-                        System.out.println("Press 1 to pause/play, 2 to stop");
-                        songChoice = scanner.nextInt();
-                        if (songChoice == 2) {
-                            musicPlayerService.stop();
-                            System.out.println("Press 2 to go back to menu");
-                        } else if (songChoice == 1) {
-                            musicPlayerService.pause();
-                        }
-                    } while (songChoice != 2);
+                    choice = scanner.nextInt();
+                    if (choice <= songList.size()) {
+                        String songPath = songList.get(choice - 1).getFilePath();
+                        musicPlayerService.setSongPath(songPath);
+                        musicPlayerService.play();
+                        int songChoice;
+                        do {
+                            System.out.println("Press 1 to pause/play, 2 to stop");
+                            songChoice = scanner.nextInt();
+                            if (songChoice == 2) {
+                                musicPlayerService.stop();
+                                System.out.println("Press 2 to go back to menu");
+                            } else if (songChoice == 1) {
+                                musicPlayerService.pause();
+                            }
+                        } while (songChoice != 2);
+                    } else {
+
+                    }
                     break;
                 }
                 case 2: {
@@ -199,7 +206,7 @@ public class CatalogRepository {
                 default:
                     System.err.println("Invalid choice!");
             }
-            choice = scanner.nextInt();
+            //choice = scanner.nextInt();
         } while (choice != 0);
     }
 }
