@@ -62,10 +62,6 @@ public class Playlist {
 
     @Override
     public String toString() {
-        return "Playlist{" +
-                "playlistId=" + getPlaylistId() +
-                ", playlistName='" + getPlaylistName() + '\'' +
-                ", songList=" + getSongList() +
-                '}';
+        return "Playlist{" + "playlistId=" + getPlaylistId() + ", playlistName='" + getPlaylistName() + '\'' + ", songList=" + getSongList() + '}';
     }
 }

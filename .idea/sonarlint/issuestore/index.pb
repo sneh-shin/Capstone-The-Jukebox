@@ -6,5 +6,3 @@ w
 G.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302,e\d\ed67eb178d523a4b3f117dcbe0eda5196367ceec
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-k
-;src/test/java/com/niit/jdp/service/DatabaseServiceTest.java,d\6\d64740a0188cfe3a976d191fad90ad808745fea3

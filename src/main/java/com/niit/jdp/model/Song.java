@@ -9,17 +9,14 @@ import java.util.Objects;
 
 public class Song {
 
-    private int songId;
-    private String songName;
-    private String artistName;
-    private String genreName;
-    private double songDuration;
-    private String albumName;
+    private final int songId;
+    private final String songName;
+    private final String artistName;
+    private final String genreName;
+    private final double songDuration;
+    private final String albumName;
 
-    private String filePath;
-
-    public Song() {
-    }
+    private final String filePath;
 
     public Song(int songId, String songName, String artistName, String genreName, double songDuration, String albumName, String filePath) {
         this.songId = songId;
@@ -35,56 +32,28 @@ public class Song {
         return songId;
     }
 
-    public void setSongId(int songId) {
-        this.songId = songId;
-    }
-
     public String getSongName() {
         return songName;
-    }
-
-    public void setSongName(String songName) {
-        this.songName = songName;
     }
 
     public String getArtistName() {
         return artistName;
     }
 
-    public void setArtistName(String artistName) {
-        this.artistName = artistName;
-    }
-
     public String getGenreName() {
         return genreName;
-    }
-
-    public void setGenreName(String genreName) {
-        this.genreName = genreName;
     }
 
     public double getSongDuration() {
         return songDuration;
     }
 
-    public void setSongDuration(double songDuration) {
-        this.songDuration = songDuration;
-    }
-
     public String getAlbumName() {
         return albumName;
     }
 
-    public void setAlbumName(String albumName) {
-        this.albumName = albumName;
-    }
-
     public String getFilePath() {
         return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 
     @Override
@@ -102,15 +71,7 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song{" +
-                "songId=" + getSongId() +
-                ", songName='" + getSongName() + '\'' +
-                ", artistName='" + getArtistName() + '\'' +
-                ", genreName='" + getGenreName() + '\'' +
-                ", songDuration=" + getSongDuration() +
-                ", albumName='" + getAlbumName() + '\'' +
-                ", filePath='" + getFilePath() + '\'' +
-                '}';
+        return "Song{" + "songId=" + getSongId() + ", songName='" + getSongName() + '\'' + ", artistName='" + getArtistName() + '\'' + ", genreName='" + getGenreName() + '\'' + ", songDuration=" + getSongDuration() + ", albumName='" + getAlbumName() + '\'' + ", filePath='" + getFilePath() + '\'' + '}';
     }
 }
 

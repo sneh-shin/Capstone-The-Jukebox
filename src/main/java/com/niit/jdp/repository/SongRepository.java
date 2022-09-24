@@ -73,19 +73,13 @@ public class SongRepository implements Repository<Song> {
 
     @Override
     public Song getById(Connection connection, int id) throws SQLException {
-        // 1. write the query for selecting a salesperson object from the `sales_person` table
         String searchQuery = "SELECT * FROM `jukebox`.`song` WHERE(`song_id` = ?);";
         Song song = null;
-        // 2. create a statement object
         try (PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
 
-            // 3. set the values of the query parameters
             preparedStatement.setInt(1, id);
-
-            // 4. execute the query
             ResultSet songResultSet = preparedStatement.executeQuery();
 
-            // 5. check if the result set is empty
             while (songResultSet.next()) {
                 // 6. fetch the values of the current row from the result set
                 int songId = songResultSet.getInt("song_id");
