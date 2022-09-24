@@ -104,13 +104,15 @@ public class CatalogRepository {
                 case 3: {
                     List<String> genreFromDatabase = songRepository.getGenreFromDatabase(connection);
                     Collections.sort(genreFromDatabase);
-                    for (String genre : genreFromDatabase) {
-
-                        System.out.println("                    " + genre);
+                    displayHeader("Genre");
+                    for (int i = 1; i < genreFromDatabase.size() - 1; i++) {
+                        String genre = genreFromDatabase.get(i);
+                        System.out.println("                    " + i + "." + genre);
                     }
                     choice = scanner.nextInt();
-                    String genreName = genreFromDatabase.get(choice - 1);
+                    String genreName = genreFromDatabase.get(choice);
                     List<Song> songList = songRepository.getByGenreName(connection, genreName);
+                    displayHeader(genreName + " Songs");
                     for (Song song : songList) {
                         System.out.println("                    " + song.getSongName());
                     }
@@ -119,49 +121,44 @@ public class CatalogRepository {
                     musicPlayerService.play();
                     int songChoice;
                     do {
-                        System.out.println("Press 1 to play/pause, 2 to stop");
                         songChoice = scanner.nextInt();
-                        if (songChoice == 2) {
-                            musicPlayerService.stop();
-                            System.out.println("Press 2 to go back to menu");
-                        } else if (songChoice == 1) {
-                            musicPlayerService.pause();
-                        }
+                        playerControls(songChoice);
                     } while (songChoice != 2);
-                    break;
+                }else{
+
                 }
+                break;
+            }
                 case 4: {
                     List<Playlist> allPlaylist = playlistRepository.getAll(connection);
-                    Collections.sort(allPlaylist, ((o1, o2) -> o1.getPlaylistName().compareTo(o2.getPlaylistName())));
+                    Collections.sort(allPlaylist, (Comparator.comparing(Playlist::getPlaylistName)));
+                    displayHeader("Playlist Library");
                     for (Playlist playlist : allPlaylist) {
                         System.out.println("                    " + playlist.getPlaylistName());
                     }
                     choice = scanner.nextInt();
-                    int playlistId = allPlaylist.get(choice - 1).getPlaylistId();
-                    Playlist playlist = playlistRepository.getById(connection, playlistId);
-                    for (String songId : playlist.getSongList()) {
-                        Song song = songRepository.getById(connection, Integer.parseInt((songId)));
-                        System.out.println("                    " + song.getSongName());
-                    }
-                    choice = scanner.nextInt();
-                    String songId = (playlist.getSongList().get(choice - 1));
-                    Song song = songRepository.getById(connection, Integer.parseInt(songId));
-                    musicPlayerService.setSongPath(song.getFilePath());
-                    musicPlayerService.play();
-                    int songChoice;
-                    do {
-                        System.out.println("Press 1 to play/pause, 2 to stop");
-                        songChoice = scanner.nextInt();
-                        if (songChoice == 2) {
-                            musicPlayerService.stop();
-                            System.out.println("Press 2 to go back to menu");
-                        } else if (songChoice == 1) {
-                            musicPlayerService.pause();
+                    if (choice >= allPlaylist.size()) {
+                        int playlistId = allPlaylist.get(choice - 1).getPlaylistId();
+                        Playlist playlist = playlistRepository.getById(connection, playlistId);
+                        displayHeader("Songs in " + playlist.getPlaylistName());
+                        for (String songId : playlist.getSongList()) {
+                            Song song = songRepository.getById(connection, Integer.parseInt((songId)));
+                            System.out.println("                    " + song.getSongName());
                         }
-                    } while (songChoice != 2);
-                    break;
-                }
+                        choice = scanner.nextInt();
+                        String songId = (playlist.getSongList().get(choice - 1));
+                        Song song = songRepository.getById(connection, Integer.parseInt(songId));
+                        musicPlayerService.setSongPath(song.getFilePath());
+                        musicPlayerService.play();
+                        int songChoice;
+                        do {
+                            songChoice = scanner.nextInt();
+                            playerControls(songChoice);
+                        } while (songChoice != 2);
+                        break;
+                    }
                 case 5: {
+                    displayHeader("!!!Create your own Playlist!!!");
                     System.out.println("Enter name of Playlist");
                     Playlist playlist1 = new Playlist();
                     playlist1.setPlaylistName(scanner.next());
