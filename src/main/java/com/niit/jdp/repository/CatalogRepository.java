@@ -5,6 +5,7 @@
  */
 package com.niit.jdp.repository;
 
+import com.niit.jdp.exception.ArtistNotFoundException;
 import com.niit.jdp.exception.PlaylistNotFoundException;
 import com.niit.jdp.exception.SongNotFoundException;
 import com.niit.jdp.model.Playlist;
@@ -99,10 +100,11 @@ public class CatalogRepository {
                             if (choice > 0 && choice <= allArtistFromDatabase.size()) {
                                 break;
                             } else {
-                                throw new SongNotFoundException("\nChoose the artists from above options!");
+                                throw new ArtistNotFoundException("Choose the artists from above options!");
                             }
                         } catch (Exception exception) {
                             System.err.println(exception.getMessage());
+                            System.out.println();
                         }
 
                     }
@@ -114,8 +116,21 @@ public class CatalogRepository {
                         System.out.println(count + ". " + song.getSongName());
                         count++;
                     }
-                    System.out.print("\nChoose the song you wish to play : ");
-                    choice = scanner.nextInt();
+                    while (true) {
+                        System.out.print("\nChoose the song you wish to play : ");
+                        choice = scanner.nextInt();
+                        try {
+                            if (choice > 0 && choice <= songList.size()) {
+                                break;
+                            } else {
+                                throw new SongNotFoundException("Choose the songs from above options!");
+                            }
+                        } catch (Exception exception) {
+                            System.err.println(exception.getMessage());
+                            System.out.println();
+                        }
+
+                    }
                     musicPlayerService.setSongPath(songList.get(choice - 1).getFilePath());
                     musicPlayerService.play();
                     playerControls();
