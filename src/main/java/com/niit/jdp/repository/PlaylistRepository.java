@@ -31,10 +31,9 @@ public class PlaylistRepository implements Repository<Playlist> {
     public boolean add(Connection connection, Playlist playlist) throws SQLException {
         String insertQuery = "INSERT INTO `jukebox`.`playlist` (`playlist_name`, `song_list`) VALUES (?, ?);";
         int numberOfRowsAffected;
+        String songList = playlist.getSongList().toString().trim().replaceAll("\\[", "").replaceAll("]", "").replaceAll(" ", "");
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-            // preparedStatement.setInt(1, playlist.getPlaylistId());
             preparedStatement.setString(1, playlist.getPlaylistName());
-            String songList = playlist.getSongList().toString().trim().replaceAll("\\[\\]", "");
             preparedStatement.setString(2, songList);
             numberOfRowsAffected = preparedStatement.executeUpdate();
         }
