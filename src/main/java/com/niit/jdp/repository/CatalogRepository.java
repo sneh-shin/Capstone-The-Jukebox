@@ -95,14 +95,8 @@ public class CatalogRepository {
                     musicPlayerService.play();
                     int songChoice;
                     do {
-                        System.out.println("Press 1 to play/pause, 2 to stop");
                         songChoice = scanner.nextInt();
-                        if (songChoice == 2) {
-                            musicPlayerService.stop();
-                            System.out.println("Press 2 to go back to menu");
-                        } else if (songChoice == 1) {
-                            musicPlayerService.pause();
-                        }
+                        playerControls(songChoice);
                     } while (songChoice != 2);
 
                     break;
@@ -111,6 +105,7 @@ public class CatalogRepository {
                     List<String> genreFromDatabase = songRepository.getGenreFromDatabase(connection);
                     Collections.sort(genreFromDatabase);
                     for (String genre : genreFromDatabase) {
+
                         System.out.println("                    " + genre);
                     }
                     choice = scanner.nextInt();

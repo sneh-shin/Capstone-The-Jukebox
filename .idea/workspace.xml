@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added custom Exception SongNotFoundException">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added displayHeader() method">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,20 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663674124244</updated>
-    </task>
-    <task id="LOCAL-00005" summary="created Song.java">
-      <created>1663674726989</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1663674726989</updated>
-    </task>
-    <task id="LOCAL-00006" summary="created Playlist.java">
-      <created>1663674790257</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1663674790257</updated>
     </task>
     <task id="LOCAL-00007" summary="created DatabaseService.java class">
       <created>1663674906720</created>
@@ -507,7 +492,21 @@
       <option name="project" value="LOCAL" />
       <updated>1664027173296</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="added displayMenu() method">
+      <created>1664030467189</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1664030467189</updated>
+    </task>
+    <task id="LOCAL-00055" summary="added displayHeader() method">
+      <created>1664030569998</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1664030569998</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,9 +521,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="called getAll() method" />
-    <MESSAGE value="created reference object for SongRepository.java" />
-    <MESSAGE value="called getAllArtist() and getByArtistName() in the CatalogRepository.java" />
     <MESSAGE value="called getGenreFromDatabase() and getByGenreName() method in the CatalogRepository.java" />
     <MESSAGE value="overridden the methods of Repository.java" />
     <MESSAGE value="implemented add() method in the PlaylistRepository.java" />
@@ -547,7 +543,10 @@
     <MESSAGE value="changed if-else to switch case in CatalogRepository.java" />
     <MESSAGE value="added SongNotFoundException.java" />
     <MESSAGE value="added custom Exception SongNotFoundException" />
-    <option name="LAST_COMMIT_MESSAGE" value="added custom Exception SongNotFoundException" />
+    <MESSAGE value="added displayMenu() method" />
+    <MESSAGE value="added displayHeader() methods" />
+    <MESSAGE value="added displayHeader() method" />
+    <option name="LAST_COMMIT_MESSAGE" value="added displayHeader() method" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
