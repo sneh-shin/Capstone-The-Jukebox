@@ -5,6 +5,7 @@
  */
 package com.niit.jdp.repository;
 
+import com.niit.jdp.exception.SongNotFoundException;
 import com.niit.jdp.model.Playlist;
 import com.niit.jdp.model.Song;
 import com.niit.jdp.service.MusicPlayerService;
@@ -49,7 +50,7 @@ public class CatalogRepository {
         this.songList = songList;
     }
 
-    public void displayCatalog(Connection connection) throws SQLException {
+    public void displayCatalog(Connection connection) throws SQLException, SongNotFoundException {
         do {
             System.out.println("==================================================================");
             System.out.println("                   Outside the Jukebox                            ");
@@ -91,7 +92,7 @@ public class CatalogRepository {
                             }
                         } while (songChoice != 2);
                     } else {
-
+                        throw new SongNotFoundException("Choose the songs only from the library!");
                     }
                     break;
                 }

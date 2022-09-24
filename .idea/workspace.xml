@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="changed if-else to switch case in CatalogRepository.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/exception/SongNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="290fb6ec-a600-4ab8-8af7-5e9bda17f190" name="Changes" comment="added SongNotFoundException.java">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/exception/SongNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/exception/SongNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/jdp/repository/CatalogRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,13 +164,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663674124244</updated>
-    </task>
-    <task id="LOCAL-00003" summary="added mysql-connector-java dependency">
-      <created>1663674510014</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1663674510014</updated>
     </task>
     <task id="LOCAL-00004" summary="added junit version 5.9.0 dependency">
       <created>1663674606983</created>
@@ -508,7 +501,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664024651234</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="added SongNotFoundException.java">
+      <created>1664026391856</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1664026391856</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -523,7 +523,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created CatalogRepository.java" />
     <MESSAGE value="added display() method in the CatalogRepository.java" />
     <MESSAGE value="called getAll() method" />
     <MESSAGE value="created reference object for SongRepository.java" />
@@ -548,7 +547,8 @@
     <MESSAGE value="created PlaylistRepositoryTest.java" />
     <MESSAGE value="added getByIdSuccess() and getByIdFailure() test cases" />
     <MESSAGE value="changed if-else to switch case in CatalogRepository.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed if-else to switch case in CatalogRepository.java" />
+    <MESSAGE value="added SongNotFoundException.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="added SongNotFoundException.java" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
