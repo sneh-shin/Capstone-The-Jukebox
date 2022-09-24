@@ -5,6 +5,7 @@
  */
 package com.niit.jdp.repository;
 
+import com.niit.jdp.exception.PlaylistNotFoundException;
 import com.niit.jdp.exception.SongNotFoundException;
 import com.niit.jdp.model.Playlist;
 import com.niit.jdp.model.Song;
@@ -50,7 +51,7 @@ public class CatalogRepository {
         this.songList = songList;
     }
 
-    public void displayCatalog(Connection connection) throws SQLException, SongNotFoundException {
+    public void displayCatalog(Connection connection) throws SQLException, SongNotFoundException, PlaylistNotFoundException {
         do {
             displayMenu();
             switch (choice) {
@@ -124,11 +125,8 @@ public class CatalogRepository {
                         songChoice = scanner.nextInt();
                         playerControls(songChoice);
                     } while (songChoice != 2);
-                }else{
-
+                    break;
                 }
-                break;
-            }
                 case 4: {
                     List<Playlist> allPlaylist = playlistRepository.getAll(connection);
                     Collections.sort(allPlaylist, (Comparator.comparing(Playlist::getPlaylistName)));
@@ -155,8 +153,11 @@ public class CatalogRepository {
                             songChoice = scanner.nextInt();
                             playerControls(songChoice);
                         } while (songChoice != 2);
-                        break;
+                    } else {
+                        throw new PlaylistNotFoundException("Play songs from available Playlists!!");
                     }
+                    break;
+                }
                 case 5: {
                     displayHeader("!!!Create your own Playlist!!!");
                     System.out.println("Enter name of Playlist");

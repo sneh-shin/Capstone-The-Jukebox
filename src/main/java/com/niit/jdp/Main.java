@@ -1,5 +1,6 @@
 package com.niit.jdp;
 
+import com.niit.jdp.exception.PlaylistNotFoundException;
 import com.niit.jdp.exception.SongNotFoundException;
 import com.niit.jdp.repository.CatalogRepository;
 import com.niit.jdp.service.DatabaseService;
@@ -15,7 +16,7 @@ public class Main {
             databaseService.connect();
             Connection connection = databaseService.getConnection();
             catalogRepository.displayCatalog(connection);
-        } catch (SQLException | ClassNotFoundException | SongNotFoundException exception) {
+        } catch (SQLException | ClassNotFoundException | SongNotFoundException | PlaylistNotFoundException exception) {
             System.err.println(exception.getMessage());
         }
     }
