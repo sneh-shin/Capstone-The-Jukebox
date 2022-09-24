@@ -220,6 +220,8 @@ public class CatalogRepository {
             System.out.println("Press any key to go back to menu");
         } else if (songChoice == 1) {
             musicPlayerService.pause();
+        } else {
+            System.err.println("Invalid Choice!!");
         }
     }
 }
