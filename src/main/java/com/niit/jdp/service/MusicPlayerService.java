@@ -68,7 +68,7 @@ public class MusicPlayerService {
             clip.start();
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            throw new RuntimeException(exception);
         }
     }
 
@@ -86,6 +86,17 @@ public class MusicPlayerService {
         } else {
             setPauseStatus(true);
             clipTime = clip.getMicrosecondPosition();
+            if (clipTime / 1000000 < 60) {
+                long time = clipTime / 1000000;
+                if (time < 10) {
+                    System.out.println("Paused at 00:00:0" + time);
+                } else {
+                    System.out.println("Paused at 00:00:" + time);
+                }
+            }
+            if (clipTime / 1000000 > 60) {
+                System.out.println("Paused at 00:" + clipTime / 60000000 + ":" + (clipTime / 1000000) % 60);
+            }
             clip.stop();
         }
     }

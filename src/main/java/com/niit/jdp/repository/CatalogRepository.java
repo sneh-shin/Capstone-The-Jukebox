@@ -6,6 +6,7 @@
 package com.niit.jdp.repository;
 
 import com.niit.jdp.exception.ArtistNotFoundException;
+import com.niit.jdp.exception.GenreNotFoundException;
 import com.niit.jdp.exception.PlaylistNotFoundException;
 import com.niit.jdp.exception.SongNotFoundException;
 import com.niit.jdp.model.Playlist;
@@ -22,19 +23,8 @@ public class CatalogRepository {
     PlaylistRepository playlistRepository = new PlaylistRepository();
     int choice;
     MusicPlayerService musicPlayerService = new MusicPlayerService();
-    private Playlist playlist;
 
     private String name;
-
-    private List<Song> songList;
-
-    public Playlist getPlaylist() {
-        return playlist;
-    }
-
-    public void setPlaylist(Playlist playlist) {
-        this.playlist = playlist;
-    }
 
     public String getName() {
         return name;
@@ -44,39 +34,41 @@ public class CatalogRepository {
         this.name = name;
     }
 
-    public List<Song> getSongList() {
-        return songList;
-    }
-
-    public void setSongList(List<Song> songList) {
-        this.songList = songList;
-    }
-
     public void displayCatalog(Connection connection) throws SQLException, SongNotFoundException, PlaylistNotFoundException {
-        do {
+        choice = 1;
+        while (choice != 0) {
             displayMenu();
+            choice = scanner.nextInt();
             switch (choice) {
+                case 0: {
+                    break;
+                }
                 case 1: {
+                    int choice;
                     displayHeader("Songs Library");
                     List<Song> songList = songRepository.getAll(connection);
-                    Collections.sort(songList, Comparator.comparing(Song::getSongId));
-                    songList.forEach(song -> {
-                        System.out.println(song.getSongId() + ". " +
-                                "" + song.getSongName());
-                    });
+                    songList.sort(Comparator.comparing(Song::getSongId));
+                    songList.forEach(song -> System.out.println(song.getSongId() + ". " + "" + song.getSongName()));
                     while (true) {
-                        System.out.print("\nChoose the song you wish to play : ");
+                        System.out.print("\nChoose the song you wish to play or enter 0 to go back to the menu : ");
                         choice = scanner.nextInt();
+                        if (choice == 0) {
+                            break;
+                        }
                         try {
                             if (choice > 0 && choice <= songList.size()) {
                                 break;
                             } else {
-                                throw new SongNotFoundException("\nChoose the songs only from the library!");
+                                throw new SongNotFoundException("Choose the songs only from the library!");
                             }
                         } catch (Exception exception) {
                             System.err.println(exception.getMessage());
+                            System.out.println();
                         }
 
+                    }
+                    if (choice == 0) {
+                        break;
                     }
                     String songPath = songList.get(choice - 1).getFilePath();
                     musicPlayerService.setSongPath(songPath);
@@ -85,6 +77,7 @@ public class CatalogRepository {
                     break;
                 }
                 case 2: {
+                    int choice;
                     List<String> allArtistFromDatabase = songRepository.getAllArtistFromDatabase(connection);
                     Collections.sort(allArtistFromDatabase);
                     displayHeader("Artist Library");
@@ -94,8 +87,11 @@ public class CatalogRepository {
                         count++;
                     }
                     while (true) {
-                        System.out.print("\nChoose the Artist id : ");
+                        System.out.print("\nChoose the Artist id or enter 0 to go back to the menu : ");
                         choice = scanner.nextInt();
+                        if (choice == 0) {
+                            break;
+                        }
                         try {
                             if (choice > 0 && choice <= allArtistFromDatabase.size()) {
                                 break;
@@ -108,6 +104,9 @@ public class CatalogRepository {
                         }
 
                     }
+                    if (choice == 0) {
+                        break;
+                    }
                     String artistName = allArtistFromDatabase.get(choice - 1);
                     List<Song> songList = songRepository.getByArtistName(connection, artistName);
                     displayHeader("Song by " + artistName);
@@ -117,8 +116,11 @@ public class CatalogRepository {
                         count++;
                     }
                     while (true) {
-                        System.out.print("\nChoose the song you wish to play : ");
+                        System.out.print("\nChoose the song you wish to play or enter 0 to go back to the menu : ");
                         choice = scanner.nextInt();
+                        if (choice == 0) {
+                            break;
+                        }
                         try {
                             if (choice > 0 && choice <= songList.size()) {
                                 break;
@@ -131,22 +133,45 @@ public class CatalogRepository {
                         }
 
                     }
+                    if (choice == 0) {
+                        break;
+                    }
                     musicPlayerService.setSongPath(songList.get(choice - 1).getFilePath());
                     musicPlayerService.play();
                     playerControls();
                     break;
                 }
                 case 3: {
+                    int choice;
                     List<String> genreFromDatabase = songRepository.getGenreFromDatabase(connection);
                     Collections.sort(genreFromDatabase);
                     displayHeader("Genre");
-                    for (int i = 1; i < genreFromDatabase.size() - 1; i++) {
+                    for (int i = 0; i < genreFromDatabase.size(); i++) {
                         String genre = genreFromDatabase.get(i);
-                        System.out.println(i + "." + genre);
+                        System.out.println(i + 1 + "." + genre);
                     }
-                    System.out.print("\nChoose the genre : ");
-                    choice = scanner.nextInt();
-                    String genreName = genreFromDatabase.get(choice);
+                    while (true) {
+                        System.out.print("\nChoose the genre or enter 0 to go back to the menu : ");
+                        choice = scanner.nextInt();
+                        if (choice == 0) {
+                            break;
+                        }
+                        try {
+                            if (choice > 0 && choice <= genreFromDatabase.size()) {
+                                break;
+                            } else {
+                                throw new GenreNotFoundException("Choose the genre from above options!");
+                            }
+                        } catch (Exception exception) {
+                            System.err.println(exception.getMessage());
+                            System.out.println();
+                        }
+
+                    }
+                    if (choice == 0) {
+                        break;
+                    }
+                    String genreName = genreFromDatabase.get(choice - 1);
                     List<Song> songList = songRepository.getByGenreName(connection, genreName);
                     displayHeader(genreName + " Songs");
                     int count = 1;
@@ -154,74 +179,141 @@ public class CatalogRepository {
                         System.out.println(count + ". " + song.getSongName());
                         count++;
                     }
-                    System.out.print("\nChoose the song you wish to play: ");
-                    choice = scanner.nextInt();
+                    while (true) {
+                        System.out.print("\nChoose the song you wish to play or enter 0 to go back to the menu : ");
+                        choice = scanner.nextInt();
+                        if (choice == 0) {
+                            break;
+                        }
+                        try {
+                            if (choice > 0 && choice <= songList.size()) {
+                                break;
+                            } else {
+                                throw new SongNotFoundException("Choose the songs from above options!");
+                            }
+                        } catch (Exception exception) {
+                            System.err.println(exception.getMessage());
+                            System.out.println();
+                        }
+                    }
+                    if (choice == 0) {
+                        break;
+                    }
                     musicPlayerService.setSongPath(songList.get(choice - 1).getFilePath());
                     musicPlayerService.play();
                     playerControls();
                     break;
                 }
                 case 4: {
+                    int choice;
                     List<Playlist> allPlaylist = playlistRepository.getAll(connection);
-                    Collections.sort(allPlaylist, (Comparator.comparing(Playlist::getPlaylistName)));
+                    allPlaylist.sort((Comparator.comparing(Playlist::getPlaylistName)));
                     displayHeader("Playlist Library");
+                    int count = 1;
                     for (Playlist playlist : allPlaylist) {
-                        System.out.println("                    " + playlist.getPlaylistName());
+                        System.out.println(count + ". " + playlist.getPlaylistName());
+                        count++;
                     }
-                    System.out.println("Choose the Playlist");
-                    choice = scanner.nextInt();
-                    if (choice <= allPlaylist.size()) {
-                        int playlistId = allPlaylist.get(choice - 1).getPlaylistId();
-                        Playlist playlist = playlistRepository.getById(connection, playlistId);
-                        displayHeader("Songs in " + playlist.getPlaylistName());
-                        for (String songId : playlist.getSongList()) {
-                            Song song = songRepository.getById(connection, Integer.parseInt((songId)));
-                            System.out.println("                    " + song.getSongName());
-                        }
-                        System.out.println("Choose the song from " + playlist.getPlaylistName());
+                    while (true) {
+                        System.out.print("\nChoose the Playlist ID or press 0 to go back to the menu : ");
                         choice = scanner.nextInt();
-                        String songId = (playlist.getSongList().get(choice - 1));
-                        Song song = songRepository.getById(connection, Integer.parseInt(songId));
-                        musicPlayerService.setSongPath(song.getFilePath());
-                        musicPlayerService.play();
-                        // int songChoice;
-                        //do {
-                        //songChoice = scanner.nextInt();
-                        playerControls();
-                        //} while (songChoice != 2);
-                    } else {
-                        throw new PlaylistNotFoundException("Play songs from available Playlists!!");
+                        try {
+                            if (choice == 0) {
+                                break;
+                            }
+                            if (choice > 0 && choice <= allPlaylist.size()) {
+                                break;
+                            } else {
+                                throw new PlaylistNotFoundException("Choose the playlist from above options!");
+                            }
+                        } catch (Exception exception) {
+                            System.err.println(exception.getMessage());
+                            System.out.println();
+                        }
+
                     }
+                    if (choice == 0) {
+                        break;
+                    }
+                    int playlistId = allPlaylist.get(choice - 1).getPlaylistId();
+                    Playlist playlist = playlistRepository.getById(connection, playlistId);
+                    displayHeader("Songs in " + playlist.getPlaylistName());
+                    count = 1;
+                    for (String songId : playlist.getSongList()) {
+                        Song song = songRepository.getById(connection, Integer.parseInt((songId)));
+                        System.out.println(count + ". " + song.getSongName());
+                        count++;
+                    }
+                    while (true) {
+                        System.out.print("\nChoose the song from " + playlist.getPlaylistName() + " playlist or enter 0 to go back to the menu : ");
+                        choice = scanner.nextInt();
+                        if (choice == 0) {
+                            break;
+                        }
+                        try {
+                            if (choice > 0 && choice <= playlist.getSongList().size()) {
+                                break;
+                            } else {
+                                throw new SongNotFoundException("Choose the songs from above options!");
+                            }
+                        } catch (Exception exception) {
+                            System.err.println(exception.getMessage());
+                            System.out.println();
+                        }
+                    }
+                    if (choice == 0) {
+                        break;
+                    }
+                    String songId = (playlist.getSongList().get(choice - 1));
+                    Song song = songRepository.getById(connection, Integer.parseInt(songId));
+                    musicPlayerService.setSongPath(song.getFilePath());
+                    musicPlayerService.play();
+                    playerControls();
                     break;
                 }
                 case 5: {
+                    int choice;
                     displayHeader("!!!Create your own Playlist!!!");
-                    System.out.println("Enter name of Playlist");
+                    System.out.print("Enter name of Playlist : ");
                     Playlist playlist1 = new Playlist();
-                    playlist1.setPlaylistName(scanner.next());
+                    scanner.nextLine();
+                    playlist1.setPlaylistName(scanner.nextLine());
                     List<Song> songList = songRepository.getAll(connection);
-                    Collections.sort(songList, Comparator.comparing(Song::getSongId));
-                    songList.forEach(song -> {
-                        System.out.println("                    " + song.getSongId() + ". " +
-                                "" + song.getSongName());
-                    });
+                    songList.sort(Comparator.comparing(Song::getSongId));
+                    songList.forEach(song -> System.out.println(song.getSongId() + ". " + "" + song.getSongName()));
                     List<String> songs = new ArrayList<>();
-                    songList = songRepository.getAll(connection);
+                    System.out.println("\nEnter the song id's you want to add in the playlist and enter 0 after adding the songs!");
                     do {
-                        System.out.println("Enter the song id's you want to add in the playlist or enter 0 to go back");
                         choice = scanner.nextInt();
-                        if (choice != 0) songs.add(String.valueOf(choice));
+                        try {
+                            if (choice > 0 && choice <= songList.size()) {
+                                songs.add(String.valueOf(choice));
+                                for (Song song : songList) {
+                                    if (song.getSongId() == choice) {
+                                        System.out.println("Song " + song.getSongId() + "." + song.getSongName() + " has been added successfully in " + playlist1.getPlaylistName() + " playlist!");
+                                    }
+                                }
+                            } else if (choice != 0) {
+                                throw new SongNotFoundException("\nPlease choose songs from above list");
+                            }
+                        } catch (Exception exception) {
+                            System.err.println(exception.getMessage());
+                        }
                     } while (choice != 0);
-                    playlist1.setSongList(songs);
-                    playlistRepository.add(connection, playlist1);
-                    System.out.println("playlist has been added successfully!");
+                    if (songs.size() > 0) {
+                        playlist1.setSongList(songs);
+                        if (playlistRepository.add(connection, playlist1)) {
+                            System.out.println("Playlist has been created successfully!");
+                        }
+                    } else {
+                        System.out.println("Playlist not created!");
+                    }
                     break;
                 }
                 default:
                     System.err.println("Invalid choice!");
             }
-            choice = scanner.nextInt();
-        } while (choice != 0);
+        }
     }
 
     public void displayMenu() {
@@ -233,7 +325,7 @@ public class CatalogRepository {
         System.out.println("5. Add playlist");
         System.out.println("6. Enter 0 to exit");
         System.out.print("\nPlease enter your choice : ");
-        choice = scanner.nextInt();
+        //choice = scanner.nextInt();
     }
 
     public void displayHeader(String title) {
@@ -250,7 +342,7 @@ public class CatalogRepository {
             songChoice = scanner.nextInt();
             if (songChoice == 2) {
                 musicPlayerService.stop();
-                System.out.println("Press 9 to go back to the main menu");
+                //System.out.println("Press 9 to go back to the main menu");
             } else if (songChoice == 1) {
                 musicPlayerService.pause();
             } else {

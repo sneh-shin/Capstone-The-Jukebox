@@ -29,11 +29,11 @@ public class DatabaseService {
         return connection != null;
     }
 
-    public void printConnectionStatus() {
-        if (connection != null) {
-            System.out.println("Database is connected!");
-        } else {
-            System.err.println("Database is not connected");
-        }
-    }
+//    public void printConnectionStatus() {
+//        if (connection != null) {
+//            System.out.println("Database is connected!");
+//        } else {
+//            System.err.println("Database is not connected");
+//        }
+//    }
 }

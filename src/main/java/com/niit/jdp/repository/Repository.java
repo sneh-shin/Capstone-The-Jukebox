@@ -16,7 +16,6 @@ public interface Repository<T> {
 
     T getById(Connection connection, int id) throws SQLException;
 
-    boolean deleteById(Connection connection, int id) throws SQLException;
 }
 
 

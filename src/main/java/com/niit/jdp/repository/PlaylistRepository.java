@@ -6,7 +6,6 @@
 package com.niit.jdp.repository;
 
 import com.niit.jdp.model.Playlist;
-import com.niit.jdp.model.Song;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,14 +16,9 @@ import java.util.List;
 
 public class PlaylistRepository implements Repository<Playlist> {
     SongRepository songRepository;
-    Playlist playlist;
-
-    List<Playlist> playlistList;
-
 
     public PlaylistRepository() {
         songRepository = new SongRepository();
-        playlistList = new ArrayList<>();
     }
 
     @Override
@@ -43,10 +37,10 @@ public class PlaylistRepository implements Repository<Playlist> {
     @Override
     public List<Playlist> getAll(Connection connection) throws SQLException {
         String readQuery = "SELECT * FROM `jukebox`.`playlist`;";
-        //List<String> listSong = new ArrayList<>();
+        List<Playlist> playlistList = new ArrayList<>();
         PreparedStatement preparedStatement = connection.prepareStatement(readQuery);
         ResultSet resultSet = preparedStatement.executeQuery();
-        List<Song> list = songRepository.getAll(connection);
+        Playlist playlist;
         while (resultSet.next()) {
             playlist = new Playlist();
             playlist.setPlaylistId(resultSet.getInt("playlist_id"));
@@ -75,10 +69,5 @@ public class PlaylistRepository implements Repository<Playlist> {
         }
 
         return playlist;
-    }
-
-    @Override
-    public boolean deleteById(Connection connection, int id) throws SQLException {
-        return false;
     }
 }
