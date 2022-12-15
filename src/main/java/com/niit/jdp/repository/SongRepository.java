@@ -13,6 +13,14 @@ import java.util.List;
 
 public class SongRepository implements Repository<Song> {
 
+    /**
+     * It takes a connection and a song object as parameters, and returns a boolean value indicating whether the song was
+     * successfully added to the database
+     *
+     * @param connection The connection to the database.
+     * @param song The song object to be added to the database.
+     * @return The number of rows affected by the query.
+     */
     @Override
     public boolean add(Connection connection, Song song) throws SQLException {
         String insertQuery = "INSERT INTO `jukebox`.`song`\n" + "(`song_id`,\n" + "`song_name`,\n" + "`artist_name`,\n" + "`genre_name`,\n" + "`song_duration`,\n" + "`album_name`,\n" + "`file_path`)\n" + "VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -32,6 +40,13 @@ public class SongRepository implements Repository<Song> {
         return numberOfRowsAffected > 0;
     }
 
+    /**
+     * It creates a query to read all the songs from the database, creates a list of songs, executes the query, and adds
+     * the songs to the list
+     *
+     * @param connection the connection to the database
+     * @return A list of songs.
+     */
     @Override
     public List<Song> getAll(Connection connection) throws SQLException {
         String readQuery = "SELECT * FROM `jukebox`.`song`;";
@@ -60,6 +75,13 @@ public class SongRepository implements Repository<Song> {
         return songsList;
     }
 
+    /**
+     * It takes a connection and an id as parameters, and returns a song object
+     *
+     * @param connection The connection to the database.
+     * @param id The id of the song to be retrieved.
+     * @return A song object
+     */
     @Override
     public Song getById(Connection connection, int id) throws SQLException {
         String searchQuery = "SELECT * FROM `jukebox`.`song` WHERE(`song_id` = ?);";
@@ -70,7 +92,6 @@ public class SongRepository implements Repository<Song> {
             ResultSet songResultSet = preparedStatement.executeQuery();
 
             while (songResultSet.next()) {
-                // 6. fetch the values of the current row from the result set
                 int songId = songResultSet.getInt("song_id");
                 String songName = songResultSet.getString("song_name");
                 String artistName = songResultSet.getString("artist_name");
@@ -84,6 +105,13 @@ public class SongRepository implements Repository<Song> {
         return song;
     }
 
+    /**
+     * It takes a connection and an artist name as parameters, and returns a list of songs by that artist
+     *
+     * @param connection Connection object
+     * @param artistName The name of the artist whose songs you want to retrieve.
+     * @return A list of songs that match the artist name.
+     */
     public List<Song> getByArtistName(Connection connection, String artistName) throws SQLException {
         String searchQuery = "SELECT * FROM `jukebox`.`song` WHERE(`artist_name` = ?);";
         List<Song> songsList = new ArrayList<>();
@@ -105,6 +133,12 @@ public class SongRepository implements Repository<Song> {
         return songsList;
     }
 
+    /**
+     * This function takes a connection to the database and returns a list of all the artists in the database
+     *
+     * @param connection This is the connection to the database.
+     * @return A list of all the artists in the database.
+     */
     public List<String> getAllArtistFromDatabase(Connection connection) throws SQLException {
         String searchQuery = "SELECT `artist_name` FROM `jukebox`.`song`;";
 
@@ -120,6 +154,14 @@ public class SongRepository implements Repository<Song> {
         return artistList;
     }
 
+    /**
+     * It takes a connection and a genre name as parameters, and returns a list of songs that have the same genre name as
+     * the one passed as a parameter
+     *
+     * @param connection the connection to the database
+     * @param genreName The name of the genre to search for.
+     * @return A list of songs that have the same genre name.
+     */
     public List<Song> getByGenreName(Connection connection, String genreName) throws SQLException {
         String searchQuery = "SELECT * FROM `jukebox`.`song` WHERE(`genre_name` = ?);";
 
@@ -146,6 +188,12 @@ public class SongRepository implements Repository<Song> {
         return songsList;
     }
 
+    /**
+     * This function takes a connection to the database and returns a list of all the genres in the database
+     *
+     * @param connection The connection to the database.
+     * @return A list of all the genres in the database.
+     */
     public List<String> getGenreFromDatabase(Connection connection) throws SQLException {
         String searchQuery = "SELECT DISTINCT `genre_name` FROM `jukebox`.`song`;";
 

@@ -46,14 +46,10 @@ public class MusicPlayerService {
         this.pauseStatus = pauseStatus;
     }
 
-    public long getClipTime() {
-        return clipTime;
-    }
-
-    public void setClipTime(long clipTime) {
-        this.clipTime = clipTime;
-    }
-
+    /**
+     * It takes the song path, creates a new audio input stream, opens the clip, loops it, sets the song status to true,
+     * sets the clip time to the current time, and starts the clip
+     */
     public void play() {
         try {
             songFile = new File(getSongPath());
@@ -72,6 +68,9 @@ public class MusicPlayerService {
         }
     }
 
+    /**
+     * If the song is playing, stop it
+     */
     public void stop() {
         if (isSongStatus()) {
             setSongStatus(false);
@@ -79,6 +78,9 @@ public class MusicPlayerService {
         }
     }
 
+    /**
+     * If the song is paused, play it. If the song is playing, pause it
+     */
     public void pause() {
         if (isPauseStatus()) {
             play();

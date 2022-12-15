@@ -34,6 +34,11 @@ public class CatalogRepository {
         this.name = name;
     }
 
+    /**
+     * It displays the menu and takes the user's choice and performs the respective operation
+     *
+     * @param connection Connection object
+     */
     public void displayCatalog(Connection connection) throws SQLException, SongNotFoundException, PlaylistNotFoundException {
         choice = 1;
         while (choice != 0) {
@@ -316,6 +321,9 @@ public class CatalogRepository {
         }
     }
 
+    /**
+     * This function displays the menu for the user to choose from
+     */
     public void displayMenu() {
         displayHeader("!!!Outside the Jukebox!!!");
         System.out.println("1. View all songs");
@@ -328,12 +336,20 @@ public class CatalogRepository {
         //choice = scanner.nextInt();
     }
 
+    /**
+     * This function displays a header with a title
+     *
+     * @param title The title of the menu
+     */
     public void displayHeader(String title) {
         System.out.println("==================================================================");
         System.out.println("                    " + title + "                          ");
         System.out.println("==================================================================");
     }
 
+    /**
+     * It takes in a user input and then calls the appropriate function in the service layer
+     */
     public void playerControls() {
         int songChoice;
         System.out.println();

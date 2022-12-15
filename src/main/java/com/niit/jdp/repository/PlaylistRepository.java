@@ -21,6 +21,13 @@ public class PlaylistRepository implements Repository<Playlist> {
         songRepository = new SongRepository();
     }
 
+    /**
+     * It takes a playlist object and adds it to the database
+     *
+     * @param connection The connection to the database.
+     * @param playlist The playlist object that you want to add to the database.
+     * @return The number of rows affected by the query.
+     */
     @Override
     public boolean add(Connection connection, Playlist playlist) throws SQLException {
         String insertQuery = "INSERT INTO `jukebox`.`playlist` (`playlist_name`, `song_list`) VALUES (?, ?);";
@@ -34,6 +41,12 @@ public class PlaylistRepository implements Repository<Playlist> {
         return numberOfRowsAffected > 0;
     }
 
+    /**
+     * This function returns a list of all the playlists in the database
+     *
+     * @param connection The connection to the database.
+     * @return A list of all the playlists in the database.
+     */
     @Override
     public List<Playlist> getAll(Connection connection) throws SQLException {
         String readQuery = "SELECT * FROM `jukebox`.`playlist`;";
@@ -52,6 +65,13 @@ public class PlaylistRepository implements Repository<Playlist> {
         return playlistList;
     }
 
+    /**
+     * This function takes in a connection and an id, and returns a playlist object
+     *
+     * @param connection The connection to the database.
+     * @param id the id of the playlist you want to get
+     * @return A playlist object
+     */
     @Override
     public Playlist getById(Connection connection, int id) throws SQLException {
         String readQuery = "SELECT * FROM `jukebox`.`playlist` WHERE `playlist_id` = ?;";

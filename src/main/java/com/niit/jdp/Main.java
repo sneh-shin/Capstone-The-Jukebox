@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
+    // This is the main method of the application. It creates an instance of the DatabaseService class and calls the
+    // connect method. It then creates an instance of the CatalogRepository class and calls the displayCatalog method.
     public static void main(String[] args) {
         DatabaseService databaseService = new DatabaseService();
         CatalogRepository catalogRepository = new CatalogRepository();

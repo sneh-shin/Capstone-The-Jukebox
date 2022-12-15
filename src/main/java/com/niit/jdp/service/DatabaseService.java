@@ -24,16 +24,13 @@ public class DatabaseService {
         return connection;
     }
 
+    /**
+     * This function connects to the database and returns true if the connection is successful
+     *
+     * @return A boolean value.
+     */
     public boolean connect() throws SQLException, ClassNotFoundException {
         connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         return connection != null;
     }
-
-//    public void printConnectionStatus() {
-//        if (connection != null) {
-//            System.out.println("Database is connected!");
-//        } else {
-//            System.err.println("Database is not connected");
-//        }
-//    }
 }
